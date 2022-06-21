@@ -1,7 +1,7 @@
 name: glados-checkin
 
-env:
-  TZ: Asia/Shanghai
+# env:
+#   TZ: Asia/Shanghai
 
 on:
   workflow_dispatch: 
