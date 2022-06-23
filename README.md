@@ -32,7 +32,7 @@
 
 简单获取方法：
 
-1、 打开浏览器，https://glados.rocks/console/account，我的账户页面。
+1、 打开浏览器，[https://glados.rocks/console/account](https://glados.rocks/console/account)，我的账户页面。
 
 ![](https://cdn.jsdelivr.net/gh/talkzhang/imgs-bed@master/image/20220622184913.png)
 
