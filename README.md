@@ -1,6 +1,6 @@
 > GLaDOS是一个可以让你科学上网的vpn网站。
 
-#### 注册地址：
+### 注册地址：
 
 1、打开 https://github.com/glados-network/GLaDOS ，找到[***Register*** ]，打开链接，填写邮箱进行登录。
 
@@ -10,7 +10,7 @@
 
 4、该脚本就是让你无需每天挂念去手动签到，自动完成glados签到，并支持企业微信推送。
 
-#### 脚本功能：
+### 脚本功能：
 
 1、通过Github Action自动定时运行[checkin.py](https://github.com/talkzhang/glados-signin/blob/master/checkin.py)脚本。
 
@@ -18,15 +18,15 @@
 
 3、然后通过企业微信群聊中机器人，自动发通知到企业微信上，由于一个人无法建群，可以先请两三个好友建群后好友退出即可。
 
-#### 食用姿势：
+### 食用姿势：
 
-##### 1.、先“Fork”本仓库。（不需要修改任何文件！）
+#### 1.、先“Fork”本仓库。（不需要修改任何文件！）
 
 ![](https://cdn.jsdelivr.net/gh/talkzhang/imgs-bed@master/image/20220622184524.png)
 
-##### 2、 注册GLaDOS，方法见上。
+#### 2、 注册GLaDOS，方法见上。
 
-##### 3、 登录GLaDOS后获取cookies
+#### 3、 登录GLaDOS后获取cookies
 
 这一步很重要，相当于获取你账户的身份，cookies信息用于后面**配置到github的actions信息内**。
 
@@ -46,7 +46,7 @@
 
 把这个***cookie***的值复制下来，等下会用。
 
-##### 4、配置Secrets
+#### 4、配置Secrets
 
 在自己的仓库 `Settings`里可以支持创建3个 `Secrets`，分别是：（如果不开启通知，只需要创建一个COOKIE即可）
 
@@ -58,7 +58,7 @@
 
 Name和value都懂吧，就是上面说的三个，可以只填一个COOKIE，但那样的话不支持企业微信通知。如果三个都需要填写的，就new三次，即填写三次name和value。
 
-##### 4、利用actions定时签到
+#### 5、利用actions定时签到
 
 ![](https://cdn.jsdelivr.net/gh/talkzhang/imgs-bed@master/image/20220623103247.png)
 
