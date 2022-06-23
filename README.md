@@ -2,7 +2,7 @@
 
 #### 注册地址：
 
-1、打开 https://github.com/glados-network/GLaDOS ，找到[`<u>`***Register***`</u>`]，打开链接，填写邮箱进行登录。
+1、打开 https://github.com/glados-network/GLaDOS ，找到[***Register*** ]，打开链接，填写邮箱进行登录。
 
 2、输入激活码 `QUT5C-7EQF9-RVBX0-WO5VG`，进行激活，获得3天试用。
 
@@ -48,7 +48,8 @@
 
 ##### 4、配置Secrets
 
-在自己的仓库`Settings`里可以支持创建3个`Secrets`，分别是：（如果不开启通知，只需要创建一个COOKIE即可）
+在自己的仓库 `Settings`里可以支持创建3个 `Secrets`，分别是：（如果不开启通知，只需要创建一个COOKIE即可）
+
 - COOKIE（**必填**）
 - SERVE（企业微信通知开关，默认是off，填on的话，会同时开启cookie失效通知和签到成功通知）
 - ROTURL（填写企业微信机器人webhook地址，不开启企业微信通知则不用填）
@@ -66,4 +67,6 @@ Actions->All workflows->glados-checkin->Enable workflow，开启该workflow即�
 1. 以上设置完毕后，每天10:50、14：50（大概推算时间，具体以实际为准，因为actions执行依靠队列、时间区等因素）会自动触发，并会执行自动checkin，如果开启企业微信通知，会自动发通知到企业微信上。
 2. **如果以上都不会的话，注册GLaDOS后，每天勤奋点记得登录后手动进行checkin即可。**
 
-   [*`<u>`如果是Edu邮箱，可免费升级为360天。`</u>`*]
+   [***如果是Edu邮箱，可免费升级为360天。***]
+
+参考原链接地址：[https://github.com/hbstarjason/glados-checkin](https://github.com/hbstarjason/glados-checkin)
