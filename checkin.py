@@ -40,22 +40,28 @@ def start():
     state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
     print(checkin.text,'\n')
     print(state.text)
+    headers = {"Content-Type": "application/json;charset=UTF-8"}
+    text_data = {"content" : checkin.text}
+    req_data = {"msgtype" : "text", "text" : text_data}
+    res = requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
+    text_data = {"content" : state.text}
+    req_data = {"msgtype" : "text", "text" : text_data}
+    res = requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
 
-
-    if sever == 'on':
-        robot_msg=None
-        if 'message' in checkin.text:
-            mess = checkin.json()['message']
-            time = state.json()['data']['leftDays']
-            time = time.split('.')[0]
-            print(time)
-            robot_msg = mess+'，you have '+time+' days left'
-        else:
-            robot_msg='cookie过期'
-        headers = {"Content-Type": "application/json;charset=UTF-8"}
-        text_data = {"content" : robot_msg}
-        req_data = {"msgtype" : "text", "text" : text_data}
-        res = requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
+    # if sever == 'on':
+    #     robot_msg=None
+    #     if 'message' in checkin.text:
+    #         mess = checkin.json()['message']
+    #         time = state.json()['data']['leftDays']
+    #         time = time.split('.')[0]
+    #         print(time)
+    #         robot_msg = mess+'，you have '+time+' days left'
+    #     else:
+    #         robot_msg='cookie过期'
+    #     headers = {"Content-Type": "application/json;charset=UTF-8"}
+    #     text_data = {"content" : robot_msg}
+    #     req_data = {"msgtype" : "text", "text" : text_data}
+    #     res = requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
 
 def main_handler(event, context):
   return start()
