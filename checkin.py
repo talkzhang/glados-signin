@@ -43,14 +43,11 @@ def start():
         print(state.text)
         headers = {"Content-Type": "application/json;charset=UTF-8"}
         
-        text_data = {"content" : checkin.text}
+        text_data = {"content" : checkin.text[:3000]}
         req_data = {"msgtype" : "text", "text" : text_data}
         res = requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
-        text_data = {"content" : res.text}
-        req_data = {"msgtype" : "text", "text" : text_data}
-        requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
         
-        text_data = {"content" : state.text}
+        text_data = {"content" : state.text[:3000]}
         req_data = {"msgtype" : "text", "text" : text_data}
         requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
     except Exception as e:
