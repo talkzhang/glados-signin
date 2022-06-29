@@ -21,7 +21,22 @@ def start():
         # 'token': 'glados_network'
         'token': 'glados.network'
     }
-    checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
+    headers={
+        'accept':'application/json, text/plain, */*',
+        # 'accept-encoding':'gzip, deflate, br',
+        'accept-language':'zh-CN,zh;q=0.9,en;q=0.8',
+        'sec-ch-ua':'" Not;A Brand";v="99", "Google Chrome";v="97", "Chromium";v="97"',
+        'sec-ch-ua-mobile':'?0',
+        'sec-ch-ua-platform':'"Windows"',
+        'sec-fetch-dest':'empty',
+        'sec-fetch-mode':'cors',
+        'sec-fetch-site':'same-origin',
+        'cookie': cookie ,
+        'origin':origin,
+        'user-agent':useragent,
+        'content-type':'application/json;charset=UTF-8'
+    }
+    checkin = requests.post(url,headers=headers,data=json.dumps(payload))
     state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
     print(checkin.text,'\n')
     print(state.text)
