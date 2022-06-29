@@ -1,4 +1,4 @@
-import requests,json,os
+import requests,json,os,traceback
 
 # server酱开关，填off不开启(默认)，填on同时开启cookie失效通知和签到成功通知
 sever = os.environ["SERVE"]
@@ -36,17 +36,29 @@ def start():
         'user-agent':useragent,
         'content-type':'application/json;charset=UTF-8'
     }
-    checkin = requests.post(url,headers=headers,data=json.dumps(payload))
-    state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
-    print(checkin.text,'\n')
-    print(state.text)
-    headers = {"Content-Type": "application/json;charset=UTF-8"}
-    text_data = {"content" : checkin.text}
-    req_data = {"msgtype" : "text", "text" : text_data}
-    requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
-    text_data = {"content" : state.text}
-    req_data = {"msgtype" : "text", "text" : text_data}
-    requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
+    try:
+        checkin = requests.post(url,headers=headers,data=json.dumps(payload))
+        state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
+        print(checkin.text,'\n')
+        print(state.text)
+        headers = {"Content-Type": "application/json;charset=UTF-8"}
+        
+        text_data = {"content" : checkin.text}
+        req_data = {"msgtype" : "text", "text" : text_data}
+        res = requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
+        text_data = {"content" : res.text}
+        req_data = {"msgtype" : "text", "text" : text_data}
+        requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
+        
+        text_data = {"content" : state.text}
+        req_data = {"msgtype" : "text", "text" : text_data}
+        requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
+    except Exception as e:
+        msg = '发生异常：' + traceback.format_exc()
+        headers = {"Content-Type": "application/json;charset=UTF-8"}
+        text_data = {"content" : msg}
+        req_data = {"msgtype" : "text", "text" : text_data}
+        requests.request('post', rot_url, data=json.dumps(req_data), headers=headers)
 
 
     # if sever == 'on':
